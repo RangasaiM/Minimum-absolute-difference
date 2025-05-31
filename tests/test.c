@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../solutions/solution.c" // your minimumAbsDifference implementation
 
 int **minimumAbsDifference(int *arr, int arrSize, int *returnSize, int **returnColumnSizes);
 
@@ -134,7 +133,6 @@ int main()
         failedTests += runTest(arr, 5, expected, 1, expectedColSizes, ++totalTests);
     }
 
-
     // Test case 6: single element repeated multiple times
     {
         int arr[] = {5, 5, 5, 5};
@@ -158,7 +156,6 @@ int main()
         int expectedColSizes[] = {2};
         failedTests += runTest(arr, 2, expected, 1, expectedColSizes, ++totalTests);
     }
-
 
     // Test case 10: negative large values
     {
