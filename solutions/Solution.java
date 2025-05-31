@@ -1,6 +1,8 @@
+package solutions;
+
 import java.util.*;
 
-class Solution {
+public class Solution {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
         Arrays.sort(arr);
         int minDiff = Integer.MAX_VALUE;
@@ -18,3 +20,5 @@ class Solution {
         return result;
     }
 }
+
+// Write
