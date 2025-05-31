@@ -68,11 +68,19 @@ int runTest(int *arr, int arrSize,
     printPairs(result, returnSize, returnColumnSizes);
     printf("\n");
 
-    qsort(expected, expectedSize, sizeof(int *), comparePairs);
+    // Deep copy of expected to avoid sorting stack-allocated memory
+    int **expectedCopy = malloc(expectedSize * sizeof(int *));
+    for (int i = 0; i < expectedSize; i++)
+    {
+        expectedCopy[i] = malloc(expectedColSizes[i] * sizeof(int));
+        memcpy(expectedCopy[i], expected[i], expectedColSizes[i] * sizeof(int));
+    }
+
+    qsort(expectedCopy, expectedSize, sizeof(int *), comparePairs);
     qsort(result, returnSize, sizeof(int *), comparePairs);
 
     int passed = arraysEqual(result, returnSize, returnColumnSizes,
-                             expected, expectedSize, expectedColSizes);
+                             expectedCopy, expectedSize, expectedColSizes);
 
     if (passed)
     {
@@ -84,11 +92,13 @@ int runTest(int *arr, int arrSize,
     }
 
     for (int i = 0; i < returnSize; i++)
-    {
         free(result[i]);
-    }
     free(result);
     free(returnColumnSizes);
+
+    for (int i = 0; i < expectedSize; i++)
+        free(expectedCopy[i]);
+    free(expectedCopy);
 
     return passed ? 0 : 1;
 }
