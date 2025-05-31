@@ -20,5 +20,3 @@ public class Solution {
         return result;
     }
 }
-
-// Write
