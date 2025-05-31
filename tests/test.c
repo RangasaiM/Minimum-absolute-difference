@@ -3,6 +3,8 @@
 #include <string.h>
 #include "../solutions/solution.c" // your minimumAbsDifference implementation
 
+int **minimumAbsDifference(int *arr, int arrSize, int *returnSize, int **returnColumnSizes);
+
 int comparePairs(const void *a, const void *b)
 {
     const int *pa = *(const int **)a;
