@@ -7,7 +7,7 @@ public:
     vector<vector<int>> minimumAbsDifference(vector<int> &arr)
     {
         // Write Your code here
-        return -1;
+        return {};
     }
 };
 
